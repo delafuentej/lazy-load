@@ -1,9 +1,11 @@
 import { createContext, useContext, useState } from "react";
+import { useProduct } from "../hooks/useProduct";
 import type { ReactElement, CSSProperties } from "react";
 
 import type {
   // ProductCardProps,
   ProductContextProps,
+  onChangeArgs,
 } from "../interfaces/interfaces";
 import styles from "../styles/styles.module.css";
 
@@ -21,18 +23,23 @@ export interface Props {
   children?: ReactElement | ReactElement[];
   className?: string;
   style?: CSSProperties;
+  value?: number;
+  onChange?: (args: onChangeArgs) => void;
 }
 
-export const ProductCard = ({ product, children, className, style }: Props) => {
-  const [counter, setCounter] = useState(0);
-
-  const increaseBy = () => {
-    setCounter((currentValue) => currentValue + 1);
-  };
-
-  const decreaseBy = () => {
-    setCounter((currentValue) => Math.max(0, currentValue - 1));
-  };
+export const ProductCard = ({
+  product,
+  children,
+  className,
+  style,
+  onChange,
+  value,
+}: Props) => {
+  const { decreaseBy, increaseBy, counter } = useProduct({
+    onChange,
+    product,
+    value,
+  });
 
   return (
     <Provider value={{ product, decreaseBy, increaseBy, counter }}>
