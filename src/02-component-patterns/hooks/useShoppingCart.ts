@@ -15,30 +15,32 @@ const useShoppingCart = () => {
     count: number;
     product: Product;
   }) => {
-    console.log("onProductCartChange");
+    console.log("count", count);
 
     setShoppingChart((prev) => {
-      const productInCart: ProductInCar = prev[product.id] || {
-        ...product,
-        count: 0,
-      };
+      //   const productInCart: ProductInCar = prev[product.id] || {
+      // ...product,
+      // count: 0,
+      //   };
 
-      if (Math.max(productInCart.count + count, 0) > 0) {
-        productInCart.count += count;
-        return {
-          ...prev,
-          [product.id]: productInCart,
-        };
+      //   if (Math.max(productInCart.count + count, 0) > 0) {
+      // productInCart.count += count;
+      // return {
+      //   ...prev,
+      //   [product.id]: productInCart,
+      // };
+      //   }
+
+      if (count === 0) {
+        const { [product.id]: toDelete, ...rest } = prev;
+        console.log("toDelete", toDelete);
+        return rest;
       }
 
-      const { [product.id]: toDelete, ...rest } = prev;
-      console.log("toDelete", toDelete);
-      return rest;
-
-      // return {
-      // ...prev,
-      // [product.id]: { ...product, count },
-      // };
+      return {
+        ...prev,
+        [product.id]: { ...product, count },
+      };
     });
   };
   return {
