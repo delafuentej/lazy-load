@@ -6,8 +6,14 @@ import {
   Navigate,
 } from "react-router-dom";
 import reactLogo from "../assets/react.svg";
-import { LazyPage1, LazyPage2, LazyPage3 } from "../lazy-load/pages";
-
+import { LazyPage3 } from "../lazy-load/pages";
+import {
+  RegisterPage,
+  FormikBasicPage,
+  FormikAbstract,
+  FormikYupPage,
+  FormikComponents,
+} from "../03-forms/pages";
 const Navigation = () => {
   return (
     <BrowserRouter>
@@ -18,20 +24,46 @@ const Navigation = () => {
           <ul>
             <li>
               <NavLink
-                to="/lazy1"
+                to="/register"
                 className={({ isActive }) => (isActive ? "nav-active" : "")}
               >
-                LazyPage1
+                Register Page
               </NavLink>
             </li>
             <li>
               <NavLink
-                to="/lazy2"
+                to="/formik-basic"
                 className={({ isActive }) => (isActive ? "nav-active" : "")}
               >
-                LazyPage2
+                Formik Basic Page
               </NavLink>
             </li>
+
+            <li>
+              <NavLink
+                to="/formik-yup"
+                className={({ isActive }) => (isActive ? "nav-active" : "")}
+              >
+                Formik Yup Page
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/formik-components"
+                className={({ isActive }) => (isActive ? "nav-active" : "")}
+              >
+                Formik Components
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/formik-abstract"
+                className={({ isActive }) => (isActive ? "nav-active" : "")}
+              >
+                Formik Abstract
+              </NavLink>
+            </li>
+
             <li>
               <NavLink
                 to="/lazy3"
@@ -43,8 +75,11 @@ const Navigation = () => {
           </ul>
         </nav>
         <Routes>
-          <Route path="/lazy1" element={<LazyPage1 />} />
-          <Route path="/lazy2" element={<LazyPage2 />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/formik-basic" element={<FormikBasicPage />} />
+          <Route path="/formik-yup" element={<FormikYupPage />} />
+          <Route path="/formik-components" element={<FormikComponents />} />
+          <Route path="/formik-abstract" element={<FormikAbstract />} />
           <Route path="/lazy3" element={<LazyPage3 />} />
           <Route path="/*" element={<Navigate to="/lazy1" />} />
         </Routes>
