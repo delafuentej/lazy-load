@@ -1,0 +1,74 @@
+[
+    {
+        "type": "input",
+        "name": "firstName",
+        "placeholder": "Fist Name",
+        "label": "Fist Name",
+        "value": "",
+        "validations": [
+            {
+                "type": "required"
+            },
+            {
+                "type": "minLength",
+                "value": 3
+            },
+            {
+                "type": "maxLength",
+                "value": 15
+            }
+        ]
+    },
+    {
+        "type": "input",
+        "name": "lastName",
+        "placeholder": "Last Name",
+        "label": "Last Name",
+        "value": "",
+        "validations": [
+            {
+                "type": "required"
+            }
+        ]
+    },
+    {
+        "type": "email",
+        "name": "email",
+        "placeholder": "Email Address",
+        "label": "Email Address",
+        "value": "",
+        "validations": [
+            {
+                "type": "required"
+            },
+            {
+                "type": "email"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "name": "jobTypes",
+        "label": "Job Types",
+        "value": "",
+        "options": [
+            {
+                "id": 1,
+                "label": "Designer"
+            },
+            {
+                "id": 2,
+                "label": "Developer"
+            },
+            {
+                "id": 3,
+                "label": "IT-Expert"
+            }
+        ],
+        "validations": [
+            {
+                "type": "required"
+            }
+        ]
+    }
+]
